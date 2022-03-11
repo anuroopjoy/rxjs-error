@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import {
   catchError,
   delayWhen,
@@ -21,7 +22,7 @@ import { SharedService } from '../shared.service';
 export class Child1Component implements OnInit {
   // public data!: any;
   public data$!: Observable<any>;
-  // private form!: any;
+  private form!: FormGroup;
   constructor(private sharedService: SharedService) {}
 
   ngOnInit(): void {
@@ -53,8 +54,7 @@ export class Child1Component implements OnInit {
       //   },
       //   error: (err) => console.log('error occured in observable', err),
       // });
-      // const test = 'test';
-      // this.form[test]();
+      // this.form.setValue({});
     } catch (err) {
       console.log('error occured', err);
     }
