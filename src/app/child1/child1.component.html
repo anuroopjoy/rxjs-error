@@ -1,2 +1,9 @@
 <p>child1 works!</p>
-{{ data$ | async }}
+<hr />
+Data
+<ng-container *ngFor="let item of data$ | async">
+  <p>{{ item.name }}</p>
+</ng-container>
+<hr />
+
+<p>Error message = {{ errorMessage }}</p>

@@ -21,7 +21,8 @@ import { SharedService } from '../shared.service';
 })
 export class Child1Component implements OnInit {
   // public data!: any;
-  public data$!: Observable<any>;
+  public data$!: Observable<any[]>;
+  public errorMessage: string = '';
   private form!: FormGroup;
   constructor(private sharedService: SharedService) {}
 
@@ -41,7 +42,9 @@ export class Child1Component implements OnInit {
           retry({ count: 2, delay: 2000 }),
           catchError((err) => {
             console.log('caught rethrown error', err);
-            return of('Http call failed');
+            this.errorMessage = err.message;
+            return of([]);
+            // return of([{ name: 'default data' }]);
           }),
           finalize(() => {
             console.log('finally block 2');
